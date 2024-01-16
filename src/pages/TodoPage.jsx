@@ -1,7 +1,7 @@
 import { Footer, Header, TodoCollection, TodoInput } from 'components';
 import { useState } from 'react';
 
-const dummyTodos = [
+export const dummyTodos = [
   {
     title: 'Learn react-router',
     isDone: true,
@@ -110,12 +110,7 @@ const TodoPage = () => {
 
   const handleDelete = (id) => {
     setTodos((prevTodos) => {
-      return prevTodos.map((todo) => {
-        if (todo.id === id) {
-          return prevTodos.filter((todo) => todo.id !== id);
-        }
-        return todo;
-      });
+      return prevTodos.filter((todo) => todo.id !== id);
     });
   };
 
@@ -136,7 +131,7 @@ const TodoPage = () => {
         onSave={handleSave}
         onDelete={handleDelete}
       />
-      <Footer />
+      <Footer dummyTodos={todos} />
     </div>
   );
 };
